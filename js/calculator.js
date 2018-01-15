@@ -62,26 +62,32 @@ $(document).ready(function () {
     });
 
     let isMouseDown = false;
-    $clearButton.on("mousedown", function () {
-        clearText(40, null);
+    $clearButton.on("click", function () {
+        clearText(1, null, true);
+    });
+    $clearButton.on("mousedown touchstart", function () {
+        clearText(100);
         isMouseDown = true;
     });
-    $clearButton.on("mouseup", function () {
+    $clearButton.on("mouseup touchend", function () {
         isMouseDown = false;
     });
 
-    function clearText(timeout, prevTimeoutId) {
+    function clearText(timeout, prevTimeoutId, isClicked) {
         if (prevTimeoutId !== null)
             clearTimeout(prevTimeoutId);
+        if (isClicked === null)
+            isClicked = false;
 
         let x = setTimeout(function () {
-            if (isMouseDown) {
+            if (isMouseDown || isClicked) {
                 $res.text(calc = calc.slice(0, -1));
                 if (calc.charAt(calc.length - 1) === " ")
                     $res.text(calc = calc.slice(0, -1));
                 lastChar = calc.charAt(calc.length - 1);
-                clearText(150, x);
             }
+            if (isMouseDown)
+                clearText(timeout, x);
         }, timeout);
     }
 
