@@ -47,9 +47,26 @@ $(document).ready(function () {
         }
     });
 
-    $clearButton.on("click", function () {
-        $res.text(calc = calc.slice(0, -1));
+    let isMouseDown = false;
+    $clearButton.on("mousedown", function () {
+        clearText(20, null);
+        isMouseDown = true;
     });
+    $clearButton.on("mouseup", function () {
+        isMouseDown = false;
+    });
+
+    function clearText(timeout, prevTimeoutId) {
+        if (prevTimeoutId !== null)
+            clearTimeout(prevTimeoutId);
+
+        let x = setTimeout(function () {
+            if (isMouseDown) {
+                $res.text(calc = calc.slice(0, -1));
+                clearText(150, x);
+            }
+        }, timeout);
+    }
 
     function badOperation() {
         alert("Bad operation, try again!");
