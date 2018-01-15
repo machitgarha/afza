@@ -36,6 +36,7 @@ $(document).ready(function () {
 
                 if (!isLastNum && !isCurNum)
                     $res.text(calc = calc.slice(0, -2));
+                // By Mohammad Amin Chitgarha ;)
 
                 calc += (isCurNum && isLastNum && lastChar !== null ? "" : " ")
                     + curChar;

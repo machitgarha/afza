@@ -43,6 +43,10 @@
         </section>
     </section>
 
+    <section id="copyright">
+        By Mohammad Amin Chitgarha
+    </section>
+
     <script src="js/jquery.js"></script>
     <script src="js/jquery.mousewheel.js"></script>
     <script src="js/calculator.js"></script>
