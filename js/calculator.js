@@ -66,6 +66,7 @@ $(document).ready(function () {
                 $res.text(calc = calc.slice(0, -1));
                 if (calc.charAt(calc.length - 1) === " ")
                     $res.text(calc = calc.slice(0, -1));
+                lastChar = calc.charAt(calc.length - 1);
                 clearText(150, x);
             }
         }, timeout);
