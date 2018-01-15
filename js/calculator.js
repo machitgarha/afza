@@ -50,7 +50,7 @@ $(document).ready(function () {
 
     let isMouseDown = false;
     $clearButton.on("mousedown", function () {
-        clearText(20, null);
+        clearText(40, null);
         isMouseDown = true;
     });
     $clearButton.on("mouseup", function () {
