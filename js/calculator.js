@@ -63,6 +63,8 @@ $(document).ready(function () {
 
         let x = setTimeout(function () {
             if (isMouseDown) {
+                if (calc.charAt(calc.length - 1) === " ")
+                    $res.text(calc = calc.slice(0, -1));
                 $res.text(calc = calc.slice(0, -1));
                 clearText(150, x);
             }
