@@ -27,10 +27,22 @@ $(document).ready(function () {
 
             default:
                 let isLastNum = parseInt(lastChar).toString() === lastChar,
-                    isCurNum = parseInt(curChar).toString() === curChar;
+                    isCurNum = parseInt(curChar).toString() === curChar,
+                    append = true;
 
-                if (curChar === ".")
+                if (curChar === ".") {
                     isCurNum = true;
+
+                    let getBack = calc.length - 1;
+                    while (getBack >= 0 && calc.charAt(getBack) !== " ") {
+                        if (calc.charAt(getBack) === ".") {
+                            append = false;
+                            break;
+                        }
+                        getBack--;
+                    }
+                }
+
                 if (lastChar === ".")
                     isLastNum = true;
 
@@ -38,8 +50,9 @@ $(document).ready(function () {
                     $res.text(calc = calc.slice(0, -2));
                 // By Mohammad Amin Chitgarha ;)
 
-                calc += (isCurNum && isLastNum && lastChar !== null ? "" : " ")
-                    + curChar;
+                if (append)
+                    calc += (isCurNum && isLastNum && lastChar !== null
+                        ? "" : " ") + curChar;
 
                 $res.text(calc);
                 lastChar = curChar;
