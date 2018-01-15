@@ -1,6 +1,7 @@
 $(document).ready(function () {
     let $res = $("section#res section"),
         $tableKeys = $("table#keys td"),
+        $clearButton = $("button#clear"),
         lastChar = null,
         calc = "";
 
@@ -17,10 +18,6 @@ $(document).ready(function () {
         switch (curChar) {
             case "=":
                 $res.text(calc = eval(calc).toString());
-                break;
-
-            case "←":
-                $res.text(calc = calc.slice(0, -1));
                 break;
 
             default:
@@ -43,5 +40,9 @@ $(document).ready(function () {
 
                 break;
         }
+    });
+
+    $clearButton.on("click", function () {
+        $res.text(calc = calc.slice(0, -1));
     });
 });

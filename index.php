@@ -7,8 +7,11 @@
 </head>
 <body>
     <section id="calculator">
-        <section id="res">
-            <section></section>
+        <section id="monitor">
+            <section id="res">
+                <section></section>
+            </section>
+            <button id="clear">←</button>
         </section>
         <section>
             <table id="keys">
@@ -31,7 +34,7 @@
                     <td>-</td>
                 </tr>
                 <tr>
-                    <td>←</td>
+                    <td>0</td>
                     <td>.</td>
                     <td>=</td>
                     <td>+</td>
