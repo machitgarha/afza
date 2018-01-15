@@ -17,7 +17,12 @@ $(document).ready(function () {
 
         switch (curChar) {
             case "=":
-                $res.text(calc = eval(calc).toString());
+                calc = eval(calc).toString();
+                if (calc === "Infinity") {
+                    badOperation();
+                    calc = "";
+                }
+                $res.text(calc);
                 break;
 
             default:
@@ -45,4 +50,8 @@ $(document).ready(function () {
     $clearButton.on("click", function () {
         $res.text(calc = calc.slice(0, -1));
     });
+
+    function badOperation() {
+        alert("Bad operation, try again!");
+    }
 });
