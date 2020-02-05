@@ -1,4 +1,7 @@
 {
     "name": "@machitgarha/afza",
-    "description": "Simple calculator with basic operations"
+    "description": "Simple calculator with basic operations",
+    "dependencies": {
+        "jquery": "^3.4.1"
+    }
 }
