@@ -25,6 +25,7 @@ section#monitor {
 
 section#calculator section#res {
     display: inherit;
+    position: relative;
     align-items: center;
     background-color: black;
     color: white;
@@ -36,7 +37,9 @@ section#calculator section#res {
     white-space: nowrap;
 }
 
-section#calculator section#res section {
+section#calculator section#res section#scroll {
+    display: flex;
+    position: relative;
     overflow: hidden;
 }
 
