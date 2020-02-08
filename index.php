@@ -9,7 +9,9 @@
     <section id="calculator">
         <section id="monitor">
             <section id="res">
-                <section></section>
+                <section id="scroll">
+                    <section></section>
+                </section>
             </section>
             <button id="clear">←</button>
         </section>
@@ -47,8 +49,9 @@
         By Mohammad Amin Chitgarha
     </section>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.mousewheel.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/iscroll/build/iscroll.js"></script>
+    <script src="./node_modules/jquery-mousewheel/jquery.mousewheel.js"></script>
     <script src="js/calculator.js"></script>
 </body>
 </html>
