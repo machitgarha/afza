@@ -72,8 +72,3 @@ section#calculator table#keys td {
 section#calculator table#keys td:hover {
     background-color: gray;
 }
-
-section#copyright {
-    font-size: 10px;
-    margin-top: 10px;
-}
