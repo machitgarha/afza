@@ -1,16 +1,30 @@
+/*
+ * Copyright 2020 Mohammad Amin Chitgarha
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 $(document).ready(function () {
-    let $res = $("section#res section"),
+    let $resultField = $("section#scroll section"),
         $tableKeys = $("table#keys td"),
         $clearButton = $("button#clear"),
         lastChar = null,
-        calc = "";
-
-    $res.on("mousewheel", function (event) {
-        let dx = event.deltaX,
-            fac = event.deltaFactor;
-        if (dx !== 0)
-            $(this).scrollLeft(dx * fac + $(this).scrollLeft());
-    });
+        calc = "",
+        myScroll = new IScroll('#scroll', {
+            mouseWheel: true,
+            scrollX: true,
+            scrollY: false
+        });
 
     $tableKeys.on("click", function () {
         let curChar = $(this).text();
@@ -22,7 +36,7 @@ $(document).ready(function () {
                     badOperation();
                     calc = "";
                 }
-                $res.text(calc);
+                $resultField.text(calc);
                 break;
 
             default:
@@ -47,14 +61,13 @@ $(document).ready(function () {
                     isLastNum = true;
 
                 if (!isLastNum && !isCurNum)
-                    $res.text(calc = calc.slice(0, -2));
-                // By Mohammad Amin Chitgarha ;)
+                    $resultField.text(calc = calc.slice(0, -2));
 
                 if (append)
-                    calc += (isCurNum && isLastNum && lastChar !== null
-                        ? "" : " ") + curChar;
+                    calc += (isCurNum && isLastNum && lastChar !== null ? "" : " ") + curChar;
 
-                $res.text(calc);
+                $resultField.text(calc);
+                myScroll.refresh();
                 lastChar = curChar;
 
                 break;
@@ -64,6 +77,7 @@ $(document).ready(function () {
     let isMouseDown = false;
     $clearButton.on("click", function () {
         clearText(1, null, true);
+        myScroll.refresh();
     });
     $clearButton.on("mousedown touchstart", function () {
         clearText(100);
@@ -81,9 +95,9 @@ $(document).ready(function () {
 
         let x = setTimeout(function () {
             if (isMouseDown || isClicked) {
-                $res.text(calc = calc.slice(0, -1));
+                $resultField.text(calc = calc.slice(0, -1));
                 if (calc.charAt(calc.length - 1) === " ")
-                    $res.text(calc = calc.slice(0, -1));
+                    $resultField.text(calc = calc.slice(0, -1));
                 lastChar = calc.charAt(calc.length - 1);
             }
             if (isMouseDown)

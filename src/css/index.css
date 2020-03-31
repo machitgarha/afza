@@ -1,3 +1,19 @@
+/*
+ * Copyright 2020 Mohammad Amin Chitgarha
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 body {
     display: flex;
     display: -webkit-flex;
@@ -25,6 +41,7 @@ section#monitor {
 
 section#calculator section#res {
     display: inherit;
+    position: relative;
     align-items: center;
     background-color: black;
     color: white;
@@ -36,7 +53,9 @@ section#calculator section#res {
     white-space: nowrap;
 }
 
-section#calculator section#res section {
+section#calculator section#res section#scroll {
+    display: flex;
+    position: relative;
     overflow: hidden;
 }
 
@@ -68,9 +87,4 @@ section#calculator table#keys td {
 
 section#calculator table#keys td:hover {
     background-color: gray;
-}
-
-section#copyright {
-    font-size: 10px;
-    margin-top: 10px;
 }
